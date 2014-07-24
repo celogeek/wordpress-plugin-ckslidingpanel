@@ -19,11 +19,26 @@ class CKSlidingPanel_Admin
 
     public function settings_page()
     {
-        $options = get_option('ckslidingpanel_options');
-        if (!isset($options))
-            $options = array(
-                'align' => 'left'
-            );
+        if (isset($_POST['reset_options']))
+        {
+            $this->reset_options();
+        }
+        $options = $this->options();
         include 'Admin/SettingsPage.php';
+    }
+
+    public function options()
+    {
+        $options = get_option('ckslidingpanel_options');
+        if (!$options)
+        {
+            $options = array('text' => 'Menu', 'align' => 'left');
+        }
+        return $options;
+    }
+
+    public function reset_options()
+    {
+        delete_option('ckslidingpanel_options');
     }
 }
