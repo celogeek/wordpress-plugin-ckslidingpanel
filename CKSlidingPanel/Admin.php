@@ -1,8 +1,6 @@
 <?php
 class CKSlidingPanel_Admin
 {
-    private $options;
-
     public function __construct()
     {
         add_action('admin_menu', array($this, 'add_plugin_page'));
@@ -16,11 +14,16 @@ class CKSlidingPanel_Admin
 
     public function settings_init()
     {
-        register_setting('ckslidingpanel_options', 'align');
+        register_setting('ckslidingpanel', 'ckslidingpanel_options');
     }
 
     public function settings_page()
     {
+        $options = get_option('ckslidingpanel_options');
+        if (!isset($options))
+            $options = array(
+                'align' => 'left'
+            );
         include 'Admin/SettingsPage.php';
     }
 }
