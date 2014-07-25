@@ -1,10 +1,39 @@
 <?php
 class CKSlidingPanel_Admin
 {
+    private $default_options;
+
     public function __construct()
     {
+        $this->init_options();
         add_action('admin_menu', array($this, 'menu_init'));
         add_action('admin_init', array($this, 'settings_init'));
+    }
+
+    private function init_options()
+    {
+        $this->default_options = array(
+            "text" => "Menu",
+            "align" => "left",
+            "color" => "#FFF",
+            "backgroundColor" => "#000",
+            "height" => "100%",
+            "top" => "0%",
+        );
+
+        $need_to_update = false;
+        $options = get_option('ckslidingpanel_options', array());
+        foreach($this->default_options as $key => $value)
+        {
+            if (!isset($options[$key]))
+            {
+                $need_to_update = true;
+                $options[$key] = $value;
+            }
+        }
+
+        if ($need_to_update)
+            update_option('ckslidingpanel_options', $options);
     }
 
     public function menu_init()
@@ -34,12 +63,7 @@ class CKSlidingPanel_Admin
 
     public function reset_options()
     {
-        $options = array(
-            "text" => "Menu",
-            "align" => "left",
-            "color" => "#FFF",
-            "backgroundColor" => "#000",
-        );
+        $options = $this->default_options;
         update_option('ckslidingpanel_options', $options);
         return $options;
     }

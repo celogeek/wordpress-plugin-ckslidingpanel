@@ -3,10 +3,10 @@
     display: none;
     position: fixed;
     border: 1px solid black;
-    height: 100%;
+    height: <?php echo esc_attr($options['height']) ?>;
     width: 350px;
     <?php echo $options['align'] ?>: -354px;
-    top: 0px;
+    top: <?php echo esc_attr($options['top']) ?>;
     background-color: <?php echo esc_attr($options['backgroundColor']) ?>;
     color: <?php echo esc_attr($options['color']) ?>;
     z-index: 999999;

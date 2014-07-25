@@ -26,6 +26,14 @@
         <th scope="row">Background Color</th>
         <td><input type="text" name="ckslidingpanel_options[backgroundColor]" value="<?php echo esc_attr($options['backgroundColor']) ?>"></td>
     </tr>
+    <tr valign="top">
+        <th scope="row">Height</th>
+        <td><input type="text" name="ckslidingpanel_options[height]" value="<?php echo esc_attr($options['height']) ?>"></td>
+    </tr>
+    <tr valign="top">
+        <th scope="row">Top</th>
+        <td><input type="text" name="ckslidingpanel_options[top]" value="<?php echo esc_attr($options['top']) ?>"></td>
+    </tr>
 </table>
 <?php submit_button(); ?> 
 </form>
