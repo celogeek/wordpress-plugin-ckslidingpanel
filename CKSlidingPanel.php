@@ -37,4 +37,7 @@ require_once('CKSlidingPanel/Sidebar.php');
 if( is_admin() )
     $ckslidingpanel_admin = new CKSlidingPanel_Admin();
 
-$ckslidingpanel_sidebar = new CKSlidingPanel_Sidebar();
+if (function_exists('register_sidebar'))
+    $ckslidingpanel_sidebar = new CKSlidingPanel_Sidebar();
+
+
