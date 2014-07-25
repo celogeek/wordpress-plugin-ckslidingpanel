@@ -34,7 +34,12 @@ class CKSlidingPanel_Admin
 
     public function reset_options()
     {
-        $options = array("text" => "Menu", "align" => "left");
+        $options = array(
+            "text" => "Menu",
+            "align" => "left",
+            "color" => "#FFF",
+            "backgroundColor" => "#000",
+        );
         update_option('ckslidingpanel_options', $options);
         return $options;
     }

@@ -15,9 +15,9 @@ class CKSlidingPanel_Sidebar
             'name' => 'CKSlidingPanel',
             'id' => 'ckslidingpanel_sidebar',
             'description' => 'Floating CKSlidingPanel, setup option in the admin menu.',
-            'before_title'  => '<h3 class="widget-title">',
+            'before_title'  => '<h3 class="widget-title ckwidget">',
             'after_title'   => '</h3>',
-            'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+            'before_widget' => '<aside id="%1$s" class="widget %2$s ckwidget">',
             'after_widget'  => '</aside>',
         );
         register_sidebar($sidebar);

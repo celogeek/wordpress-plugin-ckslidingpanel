@@ -18,6 +18,14 @@
             </select>
         </td>
     </tr>
+    <tr valign="top">
+        <th scope="row">Text Color</th>
+        <td><input type="text" name="ckslidingpanel_options[color]" value="<?php echo esc_attr($options['color']) ?>"></td>
+    </tr>
+    <tr valign="top">
+        <th scope="row">Background Color</th>
+        <td><input type="text" name="ckslidingpanel_options[backgroundColor]" value="<?php echo esc_attr($options['backgroundColor']) ?>"></td>
+    </tr>
 </table>
 <?php submit_button(); ?> 
 </form>

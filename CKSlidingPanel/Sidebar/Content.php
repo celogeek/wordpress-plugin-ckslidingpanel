@@ -7,17 +7,17 @@
     width: 350px;
     <?php echo $options['align'] ?>: -354px;
     top: 0px;
-    background-color: #000;
-    color: #FFF;
+    background-color: <?php echo esc_attr($options['backgroundColor']) ?>;
+    color: <?php echo esc_attr($options['color']) ?>;
     z-index: 999999;
     <?php if ($options['align'] == 'left') : ?>
     border-top-right-radius: 8px;
     border-bottom-right-radius: 8px;
-    box-shadow: 1px 0px 1px 0px #FFF;
+    box-shadow: 1px 0px 1px 0px <?php echo esc_attr($options['color']) ?>;
     <?php else: ?>
     border-top-left-radius: 8px;
     border-bottom-left-radius: 8px;
-    box-shadow: -1px 0px 1px 0px #FFF;
+    box-shadow: -1px 0px 1px 0px <?php echo esc_attr($options['color']) ?>;
     <?php endif; ?>
   }
   div#ckslidingpanel_link_content {
@@ -38,19 +38,16 @@
     text-align:center;
   }
   div#ckslidingpanel_link_area {
-    background-color: #000;
-    border: 1px solid #000;
+    background-color: <?php echo esc_attr($options['backgroundColor']) ?>;
+    border: 1px solid <?php echo esc_attr($options['backgroundColor']) ?>;
     <?php if ($options['align'] == 'left') : ?>
-    box-shadow: 1px 0px 1px 0px #FFF;
+    box-shadow: 1px 0px 1px 0px <?php echo esc_attr($options['color']) ?>;
     <?php else: ?>
-    box-shadow: -1px 0px 1px 0px #FFF;
+    box-shadow: -1px 0px 1px 0px <?php echo esc_attr($options['color']) ?>;
     <?php endif; ?>
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
     display: inline-block;
-  }
-  div#ckslidingpanel_link_area:hover {
-    box-shadow: 0px 0px 0px #000;
   }
   span#ckslidingpanel_link_text {
     padding-right: 20px;
@@ -60,7 +57,7 @@
     font-size: 18px;
   }
   a#ckslidingpanel_link {
-    color: #FFF;
+    color: <?php echo esc_attr($options['color']) ?>;
     text-decoration: none;
   }
   div#ckslidingpanel_content {
@@ -74,6 +71,14 @@
     -ms-overflow-style: none;
     text-align: justify;
     text-justify: inter-word;
+  }
+  .ckwidget {
+    color: <?php echo esc_attr($options['color']) ?>;
+    background-color: <?php echo esc_attr($options['backgroundColor']) ?>;
+  }
+  .ckwidget a {
+    color: <?php echo esc_attr($options['color']) ?>;
+    background-color: <?php echo esc_attr($options['backgroundColor']) ?>;
   }
 </style>
 
