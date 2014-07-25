@@ -27,6 +27,7 @@ class CKSlidingPanel_Sidebar
     {
         if (is_active_sidebar('ckslidingpanel_sidebar'))
         {
+            $options = get_option('ckslidingpanel_options');
             include('Sidebar/Content.php');
         }
     }
