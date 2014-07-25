@@ -64,8 +64,8 @@
     width: 315px;
     position: relative;                                                    
     height: 90%;
-    top: 5%;
-    left: 4%;
+    top: 48px;
+    left: 16px;
     overflow-y: auto;
     overflow-x: hidden;
     -ms-overflow-style: none;
@@ -80,9 +80,41 @@
     color: <?php echo esc_attr($options['color']) ?>;
     background-color: <?php echo esc_attr($options['backgroundColor']) ?>;
   }
+
+  div#ckslidingpanel_close_button {
+    position: absolute;
+    top: -32px;
+    <?php if ($options['align'] == 'left') : ?>
+    right: 8px;
+    <?php else: ?>
+    left: 8px;
+    <?php endif; ?>
+  }
+
+  a#ckslidingpanel_close_button_link {
+      color: <?php echo esc_attr($options['color']) ?>;
+      background-color: <?php echo esc_attr($options['backgroundColor']) ?>;
+      font-size: 32px;
+      font-weight: bold;
+      line-height: 30px;
+      text-shadow: 0 1px 0 <?php echo esc_attr($options['backgroundColor']) ?>;
+      opacity: 0.6;
+      filter: alpha(opacity=60);
+      text-decoration: none;
+  }
+
+  a#ckslidingpanel_close_button_link:hover {
+      text-decoration: none;
+      opacity: 1;
+      filter: alpha(opacity=100);
+      cursor: pointer;
+  }
 </style>
 
 <div id="ckslidingpanel">
+    <div id="ckslidingpanel_close_button">
+        <h3><a href="#" id="ckslidingpanel_close_button_link">&times;</a></h3>
+    </div>
     <div id="ckslidingpanel_link_content">
         <div id="ckslidingpanel_link_area">
             <span id="ckslidingpanel_link_text">
@@ -98,7 +130,7 @@
 <script type="text/javascript">
 (function($) {
     var isOpen = sessionStorage.getItem('ckslidingpanel_open');
-    $('a#ckslidingpanel_link').click(function() {
+    $('a#ckslidingpanel_link, a#ckslidingpanel_close_button_link').click(function() {
         if (isOpen == 1) {
             sessionStorage.setItem('ckslidingpanel_open', isOpen = 0);
             $("div#ckslidingpanel").animate({"<?php echo $options['align'] ?>":"-=<?php echo $options['width_with_border'] ?>"}, "slow");
