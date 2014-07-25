@@ -32,6 +32,9 @@ Author URI: http://blog.celogeek.com/wordpress-plugins-ckslidingpanel
 defined('ABSPATH') or die("No script kiddies please!");
 
 require_once('CKSlidingPanel/Admin.php');
+require_once('CKSlidingPanel/Sidebar.php');
 
 if( is_admin() )
-    $ckslidingpanel = new CKSlidingPanel_Admin();
+    $ckslidingpanel_admin = new CKSlidingPanel_Admin();
+
+$ckslidingpanel_sidebar = new CKSlidingPanel_Sidebar();
