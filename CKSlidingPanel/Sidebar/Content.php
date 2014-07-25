@@ -1,5 +1,6 @@
 <style type="text/css">
   div#ckslidingpanel {
+    display: none;
     position: fixed;
     border: 1px solid black;
     height: 100%;
@@ -13,18 +14,25 @@
     z-index: 999999;
     box-shadow: 1px -1px 1px #FFF;
   }
+  div#ckslidingpanel_link_content {
+    border: 0;
+    padding: 0;
+    margin: 0;
+    width: 350px;
+    position: absolute;
+    top: 50%;
+    left: 191px;
+    transform: rotate(90deg);
+    display: block;
+    text-align:center;
+  }
   div#ckslidingpanel_link_area {
     background-color: #000;
     border: 1px solid #000;
     box-shadow: 1px -1px 1px #FFF;
-    position: absolute;
-    display: block;
-    top: 50%;
-    left: 325px;
-    text-align: center;
+    display: inline-block;
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
-    transform: rotate(90deg);
   }
   div#ckslidingpanel_link_area:hover {
     box-shadow: 0px 0px 0px #000;
@@ -55,10 +63,12 @@
 </style>
 
 <div id="ckslidingpanel">
-    <div id="ckslidingpanel_link_area">
-        <span id="ckslidingpanel_link_text">
-            <a href="#" id="ckslidingpanel_link"><?php echo esc_attr($options['text']) ?></a>
-        </span>
+    <div id="ckslidingpanel_link_content">
+        <div id="ckslidingpanel_link_area">
+            <span id="ckslidingpanel_link_text">
+                <a href="#" id="ckslidingpanel_link"><?php echo esc_attr($options['text']) ?></a>
+            </span>
+        </div>
     </div>
     <div id="ckslidingpanel_content">
         <?php dynamic_sidebar('ckslidingpanel_sidebar') ?>
@@ -68,7 +78,7 @@
 <script type="text/javascript">
 (function($) {
     var isOpen = sessionStorage.getItem('ckslidingpanel_open');
-    $('a#ckslidingpanel_menu_link').click(function() {
+    $('a#ckslidingpanel_link').click(function() {
         if (isOpen == 1) {
             sessionStorage.setItem('ckslidingpanel_open', isOpen = 0);
             $("div#ckslidingpanel").animate({"left":"-=354px"}, "slow");
@@ -80,5 +90,6 @@
     if (isOpen == 1) {
         $('div#ckslidingpanel').css("left", "0px");
     }
+    $('div#ckslidingpanel').show();
 })(jQuery);
 </script>
