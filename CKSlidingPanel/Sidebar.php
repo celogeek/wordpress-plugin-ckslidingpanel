@@ -4,6 +4,7 @@ class CKSlidingPanel_Sidebar
 {
     public function __construct()
     {
+        wp_enqueue_script('jquery');
         add_action( 'widgets_init', array( $this, 'sidebar_init' ));
         add_filter( 'wp_footer', array($this, 'sidebar_scripts'));
     }
