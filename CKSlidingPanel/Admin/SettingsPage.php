@@ -34,6 +34,10 @@
         <th scope="row">Top</th>
         <td><input type="text" name="ckslidingpanel_options[top]" value="<?php echo esc_attr($options['top']) ?>"></td>
     </tr>
+    <tr valign="top">
+        <th scope="row">Width</th>
+        <td><input type="text" name="ckslidingpanel_options[width]" value="<?php echo esc_attr($options['width']) ?>"></td>
+    </tr>
 </table>
 <?php submit_button(); ?> 
 </form>

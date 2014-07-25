@@ -19,6 +19,7 @@ class CKSlidingPanel_Admin
             "backgroundColor" => "#000",
             "height" => "100%",
             "top" => "0%",
+            "width" => "350px",
         );
 
         $need_to_update = false;

@@ -4,8 +4,8 @@
     position: fixed;
     border: 1px solid black;
     height: <?php echo esc_attr($options['height']) ?>;
-    width: 350px;
-    <?php echo $options['align'] ?>: -354px;
+    width: <?php echo $options['width'] ?>;
+    <?php echo $options['align'] ?>: -<?php echo $options['width_with_border'] ?>;
     top: <?php echo esc_attr($options['top']) ?>;
     background-color: <?php echo esc_attr($options['backgroundColor']) ?>;
     color: <?php echo esc_attr($options['color']) ?>;
@@ -24,14 +24,14 @@
     border: 0;
     padding: 0;
     margin: 0;
-    width: 350px;
+    width: 100%;
     position: absolute;
     top: 50%;
     <?php if ($options['align'] == 'left') : ?>
-    left: 191px;
+    left: <?php echo esc_attr($options['menu_left']) ?>;
     transform: rotate(90deg);
     <?php else: ?>
-    right: 191px;
+    right: <?php echo esc_attr($options['menu_left']) ?>;
     transform: rotate(-90deg);
     <?php endif; ?>
     display: block;
@@ -101,10 +101,10 @@
     $('a#ckslidingpanel_link').click(function() {
         if (isOpen == 1) {
             sessionStorage.setItem('ckslidingpanel_open', isOpen = 0);
-            $("div#ckslidingpanel").animate({"<?php echo $options['align'] ?>":"-=354px"}, "slow");
+            $("div#ckslidingpanel").animate({"<?php echo $options['align'] ?>":"-=<?php echo $options['width_with_border'] ?>"}, "slow");
         } else {
             sessionStorage.setItem('ckslidingpanel_open', isOpen = 1);
-            $("div#ckslidingpanel").animate({"<?php echo $options['align'] ?>":"+=354px"}, "slow");
+            $("div#ckslidingpanel").animate({"<?php echo $options['align'] ?>":"+=<?php echo $options['width_with_border'] ?>"}, "slow");
         }
     });
     if (isOpen == 1) {
