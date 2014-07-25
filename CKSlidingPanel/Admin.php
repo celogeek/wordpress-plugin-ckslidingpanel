@@ -15,14 +15,11 @@ class CKSlidingPanel_Admin
     public function settings_init()
     {
         register_setting('ckslidingpanel', 'ckslidingpanel_options');
+        $this->options();
     }
 
     public function settings_page()
     {
-        if (isset($_POST['reset_options']))
-        {
-            $this->reset_options();
-        }
         $options = $this->options();
         include 'Admin/SettingsPage.php';
     }
@@ -30,15 +27,15 @@ class CKSlidingPanel_Admin
     public function options()
     {
         $options = get_option('ckslidingpanel_options');
-        if (!$options)
-        {
-            $options = array('text' => 'Menu', 'align' => 'left');
-        }
+        if (!$options || isset($_POST['reset_options']))
+            $options = $this->reset_options();
         return $options;
     }
 
     public function reset_options()
     {
-        delete_option('ckslidingpanel_options');
+        $options = array("text" => "Menu", "align" => "left");
+        update_option('ckslidingpanel_options', $options);
+        return $options;
     }
 }
