@@ -5,14 +5,20 @@
     border: 1px solid black;
     height: 100%;
     width: 350px;
-    left: -354px;
+    <?php echo $options['align'] ?>: -354px;
     top: 0px;
-    border-top-right-radius: 8px;
-    border-bottom-right-radius: 8px;
     background-color: #000;
     color: #FFF;
     z-index: 999999;
-    box-shadow: 1px -1px 1px #FFF;
+    <?php if ($options['align'] == 'left') : ?>
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    box-shadow: 1px 0px 1px 0px #FFF;
+    <?php else: ?>
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    box-shadow: -1px 0px 1px 0px #FFF;
+    <?php endif; ?>
   }
   div#ckslidingpanel_link_content {
     border: 0;
@@ -21,18 +27,27 @@
     width: 350px;
     position: absolute;
     top: 50%;
+    <?php if ($options['align'] == 'left') : ?>
     left: 191px;
     transform: rotate(90deg);
+    <?php else: ?>
+    right: 191px;
+    transform: rotate(-90deg);
+    <?php endif; ?>
     display: block;
     text-align:center;
   }
   div#ckslidingpanel_link_area {
     background-color: #000;
     border: 1px solid #000;
-    box-shadow: 1px -1px 1px #FFF;
-    display: inline-block;
+    <?php if ($options['align'] == 'left') : ?>
+    box-shadow: 1px 0px 1px 0px #FFF;
+    <?php else: ?>
+    box-shadow: -1px 0px 1px 0px #FFF;
+    <?php endif; ?>
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
+    display: inline-block;
   }
   div#ckslidingpanel_link_area:hover {
     box-shadow: 0px 0px 0px #000;
@@ -81,14 +96,14 @@
     $('a#ckslidingpanel_link').click(function() {
         if (isOpen == 1) {
             sessionStorage.setItem('ckslidingpanel_open', isOpen = 0);
-            $("div#ckslidingpanel").animate({"left":"-=354px"}, "slow");
+            $("div#ckslidingpanel").animate({"<?php echo $options['align'] ?>":"-=354px"}, "slow");
         } else {
             sessionStorage.setItem('ckslidingpanel_open', isOpen = 1);
-            $("div#ckslidingpanel").animate({"left":"+=354px"}, "slow");
+            $("div#ckslidingpanel").animate({"<?php echo $options['align'] ?>":"+=354px"}, "slow");
         }
     });
     if (isOpen == 1) {
-        $('div#ckslidingpanel').css("left", "0px");
+        $('div#ckslidingpanel').css("<?php echo $options['align'] ?>", "0px");
     }
     $('div#ckslidingpanel').show();
 })(jQuery);
