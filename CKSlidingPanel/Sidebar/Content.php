@@ -61,7 +61,7 @@
     text-decoration: none;
   }
   div#ckslidingpanel_content {
-    width: 315px;
+    width:  <?php echo esc_attr($options['width_content']) ?>;
     position: relative;                                                    
     height: 90%;
     top: 48px;
