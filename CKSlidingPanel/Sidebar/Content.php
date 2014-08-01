@@ -5,7 +5,7 @@
     border: 1px solid black;
     height: <?php echo esc_attr($options['height']) ?>;
     width: <?php echo $options['width'] ?>;
-    <?php echo $options['align'] ?>: -<?php echo $options['width_with_border'] ?>;
+    max-width: 100%;
     top: <?php echo esc_attr($options['top']) ?>;
     background-color: <?php echo esc_attr($options['backgroundColor']) ?>;
     color: <?php echo esc_attr($options['color']) ?>;
@@ -27,11 +27,10 @@
     width: 100%;
     position: absolute;
     top: 50%;
+    <?php echo $options['align'] ?>: calc(50% + 14px);
     <?php if ($options['align'] == 'left') : ?>
-    left: <?php echo esc_attr($options['menu_left']) ?>;
     transform: rotate(90deg);
     <?php else: ?>
-    right: <?php echo esc_attr($options['menu_left']) ?>;
     transform: rotate(-90deg);
     <?php endif; ?>
     display: block;
@@ -61,7 +60,7 @@
     text-decoration: none;
   }
   div#ckslidingpanel_content {
-    width:  <?php echo esc_attr($options['width_content']) ?>;
+    width: calc(100% - 32px);
     position: relative;                                                    
     height: 90%;
     top: 48px;
@@ -129,19 +128,19 @@
 
 <script type="text/javascript">
 (function($) {
-    var isOpen = sessionStorage.getItem('ckslidingpanel_open');
+    var isOpen = sessionStorage.getItem('ckslidingpanel_open'),
+        animateMove = (parseInt($("div#ckslidingpanel").css('width')) + 4) + 'px';
+
     $('a#ckslidingpanel_link, a#ckslidingpanel_close_button_link').click(function() {
         if (isOpen == 1) {
-            sessionStorage.setItem('ckslidingpanel_open', isOpen = 0);
-            $("div#ckslidingpanel").animate({"<?php echo $options['align'] ?>":"-=<?php echo $options['width_with_border'] ?>"}, "slow");
+            //sessionStorage.setItem('ckslidingpanel_open', isOpen = 0);
+            $("div#ckslidingpanel").animate({"<?php echo $options['align'] ?>":"-=" + animateMove}, "slow");
         } else {
-            sessionStorage.setItem('ckslidingpanel_open', isOpen = 1);
-            $("div#ckslidingpanel").animate({"<?php echo $options['align'] ?>":"+=<?php echo $options['width_with_border'] ?>"}, "slow");
+            //sessionStorage.setItem('ckslidingpanel_open', isOpen = 1);
+            $("div#ckslidingpanel").animate({"<?php echo $options['align'] ?>":"+=" + animateMove}, "slow");
         }
     });
-    if (isOpen == 1) {
-        $('div#ckslidingpanel').css("<?php echo $options['align'] ?>", "0px");
-    }
+    $('div#ckslidingpanel').css("<?php echo $options['align'] ?>", isOpen == 1 ? "0px" : "-" + animateMove);
     $('div#ckslidingpanel').show();
 })(jQuery);
 </script>

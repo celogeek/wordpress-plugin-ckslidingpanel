@@ -28,9 +28,6 @@ class CKSlidingPanel_Sidebar
         if (is_active_sidebar('ckslidingpanel_sidebar'))
         {
             $options = get_option('ckslidingpanel_options');
-            $options['width_with_border'] = (intval($options['width']) + 4) . "px";
-            $options['width_content'] = (intval($options['width']) - 32) . "px";
-            $options['menu_left'] = ((intval($options['width_with_border']) * 0.5) + 14) . "px";
             include('Sidebar/Content.php');
         }
     }
