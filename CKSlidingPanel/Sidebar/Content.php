@@ -133,10 +133,10 @@
 
     $('a#ckslidingpanel_link, a#ckslidingpanel_close_button_link').click(function() {
         if (isOpen == 1) {
-            //sessionStorage.setItem('ckslidingpanel_open', isOpen = 0);
+            sessionStorage.setItem('ckslidingpanel_open', isOpen = 0);
             $("div#ckslidingpanel").animate({"<?php echo $options['align'] ?>":"-=" + animateMove}, "slow");
         } else {
-            //sessionStorage.setItem('ckslidingpanel_open', isOpen = 1);
+            sessionStorage.setItem('ckslidingpanel_open', isOpen = 1);
             $("div#ckslidingpanel").animate({"<?php echo $options['align'] ?>":"+=" + animateMove}, "slow");
         }
     });
